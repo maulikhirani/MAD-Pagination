@@ -28,10 +28,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvUsers.adapter = pagingAdapter
-
-        pagingAdapter.withLoadStateHeaderAndFooter(
-            UserLoadingAdapter(pagingAdapter::retry),
+        binding.rvUsers.adapter = pagingAdapter.withLoadStateFooter(
             UserLoadingAdapter(pagingAdapter::retry)
         )
 
