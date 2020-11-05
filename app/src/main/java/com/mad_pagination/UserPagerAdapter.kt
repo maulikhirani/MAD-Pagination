@@ -6,6 +6,7 @@ import androidx.paging.DifferCallback
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.mad_pagination.databinding.ListItemUserBinding
 import com.mad_pagination.model.User
 
@@ -18,6 +19,9 @@ class UserPagerAdapter(diffCallback: DiffUtil.ItemCallback<User>):
 
         fun bind(user: User) {
             binding.user = user
+            binding.imageView.load(user.image) {
+                crossfade(true)
+            }
             binding.executePendingBindings()
         }
 
