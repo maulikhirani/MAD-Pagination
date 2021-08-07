@@ -13,10 +13,10 @@ class HomeViewModel : ViewModel() {
     val flow = Pager(
         // Configure how data is loaded by passing additional properties to
         // PagingConfig, such as prefetchDistance.
-        PagingConfig(pageSize = 5)
-    ) {
-        UsersPagingSource(NetworkManager.apiService)
-    }.flow
+        PagingConfig(pageSize = 5), pagingSourceFactory = {
+            UsersPagingSource(NetworkManager.apiService)
+        }
+    ).flow
         .cachedIn(viewModelScope)
 
 }
